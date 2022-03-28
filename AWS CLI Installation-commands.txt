@@ -1,0 +1,212 @@
+AWS CLI documentation Link : https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html
+
+1.https://aws.amazon.com/cli/
+2.Windows Download and run the 64-bit Windows installer.
+3.Open Command prompt and Run as An Administrator
+
+snap install aws-cli  --classic
+
+4.aws --version
+5.aws configure
+
+AWS Access Key ID [None]: AKxxxxxxxxxUK6
+AWS Secret Access Key [None]: axxxxxxxsvg
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+6.aws iam list-users
+  aws iam list-groups
+
+
+>Group Creation :
+7.aws iam create-group --group-name DemoGRP 
+>User Creation
+  C:\>aws iam create-user --user-name DemoUser
+>Policy Attachment :
+aws iam attach-user-policy --user-name DemoUser --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
+
+>Add user to Group
+  C:\>aws iam add-user-to-group --user-name DemoUser --group-name DemoGRP 
+>Get Group information
+   C:\>aws iam get-group --group-name Demo 
+>List S3 
+>aws s3 ls
+
+To create new bucket
+aws s3 mb s3://bkt-name
+
+copying local file to s3 bucket
+>aws s3 cp C:/Users/user/Desktop/Day-11.txt  s3://shashi-11/Day-11.txt
+
+copying from s3 bucket to local
+>aws s3 cp s3://shashi-11/2.jpg  C:/Users/user/Desktop/22.jpg
+
+aws s3 cp  s3://demo-909/index.html C:\Users\user\Desktop\file\index.html
+
+>to delete s3 bucket (non-versioning)
+
+aws s3api delete-bucket --bucket mainbkt-1 --region us-east-1
+
+> How to delete all objects from bucket ()
+
+  aws s3 rm s3://mainbkt-11 --recursive
+
+4)List of S3 buckets
+C:\>aws s3 ls
+
+To list the bucket objects:
+
+aws s3api list-objects --bucket shashi-11 --query 'Contents[].{Key: Key, Size: Size}'
+
+To display regions in json format
+C:\>aws ec2 describe-regions
+
+To display regions in Text format
+C:\>aws ec2 describe-regions --output text
+
+To display regions in Table format
+C:\>aws ec2 describe-regions --output table
+
+
+Security Group Creation :
+
+C:\>aws ec2 create-security-group --group-name DGroup --description "Security Gr
+oup for my instance"
+{
+    "GroupId": "sg-01248d834f2492367"
+}
+
+
+aws ec2  authorize-security-group-ingress --group-name ASGroup --protocol tcp --port  65535 --cidr 192.31.0.0 /16
+aws ec2 run-instances --image-id ami-0d5d9d301c853a04a --count 1 --instance-type t2.micro --key-name  A-keypair  --security-groups ASGroup
+
+aws ec2 describe-instances
+C:\>aws ec2 describe-instances --query "Reservations[*].Instances[*].[InstanceId,State,Name,LaunchTime,PublicIpAddress]"
+[
+    [
+        [
+            "i-09031f5023411d82e",
+            {
+                "Code": 16,
+                "Name": "running"
+            },
+            null,
+            "2019-12-04T18:07:59.000Z",
+            "3.17.163.12"
+        ]
+    ]
+]
+
+
+
+https://www.geeksforgeeks.org/launching-an-ec2-instance-using-aws-cli/
+
+
+
+aws ec2 run-instances --image-id <ami-id> --count 1 --instance-type t2.micro 
+                      --key-name <Keypair-name> --security-group-ids <SecurityGroupId> 
+                      --subnet-id <SubnetId>
+
+aws ec2 run-instances --image-id ami-0ab4d1e9cf9a1215a --count 1  --instance-type t2.micro --key-name demo-nv --security-group-ids sg-001e42afd02cef21e --subnet-id subnet-005c374f992b3e525
+----------------------------------
+Launching RDS from AWS CLI:
+---------------------------------
+aws rds create-db-instance ^
+    --engine sqlserver-se ^
+    --db-instance-identifier mydbinstance ^
+    --allocated-storage 20 ^
+    --db-instance-class db.t2.micro ^
+    --vpc-security-group-ids mysecuritygroup ^
+    --db-subnet-group mydbsubnetgroup ^
+    --master-username masterawsuser ^ 
+    --master-user-password masteruserpassword ^
+    --backup-retention-period 3
+
+
+------------------------------------------------------------------------------------------------------------
+https://docs.aws.amazon.com/solutions/latest/instance-scheduler/scheduler-cli.html
+
+$ scheduler-cli create-period --name "weekdays" --begintime 09:00 --endtime 18:00 --weekdays mon-fri --stack Scheduler
+{
+   "Period": {
+      "Name": "weekdays", 
+      "Endtime": "18:00", 
+      "Type": "period", 
+      "Begintime": "09:00", 
+      "Weekdays": [
+         "mon-fri"
+      ]
+   }
+}
+
+
+delete-period:
+--------------
+$ scheduler-cli delete-period --name weekdays --stack Scheduler
+{
+   "Period": "weekdays"
+}
+
+
+case-2:
+
+$ scheduler-cli create-schedule --name LondonOfficeHours --periods weekdays,weekends --timezone Europe/London --stack Scheduler
+{
+   "Schedule": {
+      "Enforced": false, 
+      "Name": "LondonOfficeHours", 
+      "StopNewInstances": true, 
+      "Periods": [
+         "weekends", 
+         "weekdays"
+      ], 
+      "Timezone": "Europe/London", 
+      "Type": "schedule"
+   }
+}
+
+delete-period:
+-------------
+$ scheduler-cli delete-schedule --name LondonOfficeHours --stack Scheduler
+{
+   "Schedule": "LondonOfficeHours"
+}
+
+
+----------------------------------------------------------------------------
+
+1)VPC Setup using AWS CLI
+2)Launch EC2 instance
+3)start and stop EC2 instance
+4)schedule EC2 instace 
+6)create s3 bucket
+7)upload/download data to/from s3 bucket
+8)delete s3 bucket
+9)create SNS topic (publish/subscribe)
+10)create RDS instance , stop and start.
+11)increase rds storage
+12)rds snapshot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

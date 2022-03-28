@@ -1,0 +1,127 @@
+Database Migration :
+
+EC2 MySqL instance (Source Endpoint)
+
+RDS Instance (Destination Endpoint)
+
+Use Database Migrations Service
+---------------------------------------------
+1)Launch Ubuntu 18.04 EC2  Instance 
+
+2)
+sudo su 
+apt-get update -y
+apt-get install mysql-server -y
+cd /etc/mysql
+ls
+cd mysql.conf.d
+ls
+nano mysqld.cnf
+
+	bind-address = 0.0.0.0
+mysql -u root -p 
+root
+CREATE USER 'adminuser'@'localhost' IDENTIFIED BY 'adminuser';
+
+GRANT ALL PRIVILEGES ON *.* TO 'adminuser'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'adminuser'@'%' IDENTIFIED BY 'adminuser';
+
+GRANT ALL PRIVILEGES ON *.* TO  'adminuser'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+create database db1;
+show databases;
+exit
+service mysql restart
+ufw allow 3306 
+createa table and insert some records into it
+
+-----------------------
+login to local database 
+mysql -h 18.205.160.226 (public-ip of ec2) -u admuser -p 3306 -p 
+----------------------
+
+>>Open RDS Service
+ 
+Create Database - mysql DB instance mygratedb1
+
+>>Open Database Migration Service
+
+Create Two Endpoints (source Endpoint and Destination Endpoint)
+
+Replication instances 
+Name: replication1
+Instance class : dms.t2.micro
+Engine Version : 3.1.4
+Allocate storage : 10
+VPC : default-vpc
+create
+Note :replication instance is backend for migration stance
+
+Endpoint >
+
+#source Endpoint creation :
+
+1)Endpoint type : Source endpoint
+2)Endpoint identifier:sourceins1
+3)source Engine:mysql
+4)Server name: 18.205.160.226 (public-ip of ec2)
+5)Port:3306
+6)Username:admuser Password:admuser
+create Endpoint
+
+#Target Endpoint Creation
+
+1)Endpoint type : Target endpoint
+select RDS Instance
+ RDS Instance : migratedb1
+2)Endpoint identifier:migratedb1
+3)Target Engine:mysql
+4)Server name: RDS-Instance End-point
+5)Port:3306
+6)Username:admin Password:admin1234
+create Endpoint
+-----------------------------------------------------
+observation :
+
+1)we created replication instance
+2)created EC2 instance with mysql
+3)created RDS instance 
+4)created source and Target endpoints
+
+5)create Migration Task
+
+-----------------------------------------------------
+
+Database migration Task:
+
+Task identifier : firstmigratetask
+Replication instance: replication1
+Source database Endpoint:sourceins1
+Target database Endpoint:migratedb1
+Migration type:existing Data
+select Start Task on create
+
+Task Settings :
+Target table Preparation Mode :
+Drop tables on target
+Include LOB columns : Limited LOB mode
+Maximum LOB Size : 32
+
+Table Mapping :
+Editing Mode : Guided UI 
+Add New Selection Rule
+Schema :Enter a Schema
+schema name :<data-base-name>
+Table name:<table-name>
+Action : include
+
+Create Task
+
+
+
+
+ 
+

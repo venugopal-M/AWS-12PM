@@ -1,0 +1,56 @@
+A golden AMI is an AMI that contains the latest security patches, software, configuration, and software agents that you need to install for logging, security maintenance, and performance monitoring.
+
+1.Launch EC2 instance (ubuntu 20.04)
+2.login 
+3.sudo su
+4.cd
+5.apt-get update -y   |  yum update -y
+6.mkdir app1
+7.cd app1
+8.nano 1.txt
+	Welcome to Custom AMI Demo
+	ctrl+x , press enter key
+9.cd
+10.clear
+
+apt-get install openjdk-11-jdk -y
+
+11.apt-get install apache2 -y 
+12.cd /var/www/html
+13. nano home.html
+	<html>
+	<body>
+	<center>
+	<h1> Welcome to My WebServer ,develped by Avinash </h1>
+	</body>
+	</html>
+	ctrl + x , press enter key
+14.service apache2 status
+15.cd
+16.Open Browser type vm-public-ip:80/home.html
+
+----------CustomAMI------------------
+
+17.Goto EC2 Dashboard , Running Instance 
+      Select VM ,Actions , Image and Templates > Create Image
+	Provide Name and description
+      Create Image
+18.EC2-DashBoard > Images > AMIs
+optional:
+19.Terminate Running Instance
+20.Launch VM from Customized AMI
+21.Lauch Instance > MyAMI> .....
+22.Login through putty
+23.Ckeck folder,apache2
+24.run through browser
+25.EC2Dashboard >Elastic block store > Snapshot
+
+While Generating CUSTOM AMI,by default snapshot will be generated.
+
+26.EC2Dashboard >Images > AMIs>
+      Actions >Copy AMI  to new region
+27.Launch CustomAMI in new region
+
+
+
+    

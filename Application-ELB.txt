@@ -1,0 +1,63 @@
+
+Classic ELB : HTTP,HTTPS,TCP,SSL
+
+Network ELB : TCP,TLS,UDP
+
+Application ELB : HTTP,HTTPS
+
+------------------------------------------------------
+
+1)Launch 2 EC2 : orders,payments
+2)create TGs (ord-TG,pay-TG)
+3)Create Application-ELB
+
+ShellScript :
+
+#! /bin/bash
+
+sudo su
+cd
+apt-get update -y
+apt-get install apache2 -y
+cd /var/www/html
+mkdir e-com
+cd e-com
+mkdir orders
+cd orders
+echo "<center><h2> Welcome To Orders Home Page </h2></center>" > orders.html
+
+
+
+
+#! /bin/bash
+
+sudo su
+cd
+apt-get update -y
+apt-get install apache2 -y
+cd /var/www/html
+mkdir e-com
+cd e-com
+mkdir payments
+cd payments
+echo "<center><h2> Welcome To Payments Home Page </h2></center>" > payments.html
+
+
+
+HTTP STATUS CODE:
+
+1XX -- 100 - 199 : Server Providing Some Info to Client
+
+2XX -- 200 - 299 : Success
+
+3XX -- 300 - 399 : Redirection
+
+4XX -- 400 - 499 : Error due to Client
+
+5XX -- 500 - 599 : Error due to Server
+
+
+
+
+
+

@@ -1,0 +1,157 @@
+SG and NACL :
+
+SG :Security Group
+In general we have to specify inbound and outbound rules for security group.
+1.it works at "instance level"
+2.Security Groups are "statefull" in Nature.
+3.we have to specify inbound rules.
+4.No need to specify outbound rule.
+ because by default all traffic allowed at outbound
+
+
+
+case 1 :
+
+inbound :
+
+-SSH 22 from Anywhere
+
+outbound :
+
+-AllTraffic from Anywhere
+ 
+Login : success
+
+Ping : success
+
+
+case 2 :
+
+inbound :
+
+-SSH 22 from Anywhere
+
+outbound :
+
+-none
+ 
+Login : success
+
+Ping : Failed
+
+case 3 :
+
+inbound :
+
+-none
+
+outbound :
+
+-All Traffic
+ 
+Login : Failed
+
+Ping :  NA
+
+
+case 4 :
+
+inbound :
+
+-SSH
+
+outbound :
+
+-SSH
+ 
+Login : Success
+
+Ping :  Failed
+
+
+Reset Security Groups
+
+-------------------------------------------------------------------
+
+NACL :Network Access Controle List
+-----------------------------------------
+In general we have to specify inbound and outbound rules for NACL.
+
+1)it works at subnet level.
+2)it is stateless in Nature.
+3)it is having allowed Rules and deny Rules
+
+
+
+
+case 1 :
+
+inbound :
+
+-SSH 22 from Anywhere
+
+outbound :
+
+-AllTraffic from Anywhere
+ 
+Login : success
+
+Ping : Failed
+
+
+case 2 :
+
+inbound :
+
+-SSH 22 from Anywhere
+
+outbound :
+
+-none
+ 
+Login : Failed
+
+Ping : 
+
+
+case 3 :
+
+inbound :
+
+-none
+
+outbound :
+
+-All Traffic
+ 
+Login : Failed
+
+Ping :  NA
+
+
+
+case 4 :
+
+inbound :
+
+-SSH
+
+outbound :
+
+-SSH
+ 
+Login : Success
+
+Ping :  Failed
+
+
+
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-ephemeral-ports
+
+
+
+
+
+
+
+

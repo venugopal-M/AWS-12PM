@@ -1,0 +1,215 @@
+AWS and DevOPs :
+----------------
+
+1)Basic Networking Knowledge : 3 hrs 
+
+2)AWS Services 
+
+	-Infastructure : - Networking
+	-Administration
+	-Data Maintanence
+
+-----------------------------------
+AWS Services :
+
+1)Basic Networking -- 3 hrs
+
+2) VPC Setup -- 1 hr
+
+3) EC2 Instance Launching -- Elastic Cloud Computing
+	
+	-windows (windows 2019 Server)
+	-Linux -- (ubuntu,amiLinux,Redhat,SUSE Linux)
+
+4) Elastic IP and custom AMI demos
+
+5) NAT -- Network Address Translation
+
+6) VPC Peering - intra peering and inter Peering
+
+7) Security Groups and NACL 
+
+8) 3 -Tier Architecture
+
+9) EBS --- Elastic Block Storage (Volumes)
+
+10) EFS --- Elastic File Sharing (share folder)
+
+11) ELB --- Elastic Load Balancers
+	
+		-Classic  - Network  -Application  -Gateway
+12)ASG --- Autoscaling Group
+
+13) ASG + ELB ---with complex Application
+
+ --------------------Infrastructure --------------------
+
+14) IAM -- Identity Access Management --- Adminstration Service
+
+	--Users  --- User Groups --Policies --Roles
+
+	--Custom Policies   (json scripting)
+
+  	--AWS CLI operations
+
+15) S3 -- Simple Storage Service 
+
+	   10 topics
+
+	 --CRR,LC,static website hosting
+	 -- Encription --- KMS -- Key Management Service
+	 -- Access S3 bucket from Ec2 (public and private)
+         -- VPC End point + IAM Roles
+
+16) RDS  -Relational Database Service
+
+	 - Dev - Test -Production Envs
+	 -  SQL
+	 -ec2 + rds
+
+17)DMS - DataMigration Service
+
+	--Local DB to Cloud DB
+
+18) Cloud watch : Monitoring 
+
+	-- Metrics , Dashboards,widgets,Logs ,Alarams,Events
+        -- vpc flow logs
+19) CloudTrail : Only Logs
+
+20) CloudFormation : json scripting
+		
+		-stacks
+
+21) Lambda Services -- python scripting
+
+22) Cloud Front --- CDN ,Edge Locations,geo restriction
+
+23)Route 53 --- DNS Config
+
+
++ Add-ons
+
+----------------------------------------------------------------
+
+1)Basic Networking -- 3 hrs:
+
+1)IP Address
+
+2)VPC -- Virtual Private Cloud
+
+3)Subnets
+
+4)IGW -internet Gateway ,NAT-IGW -- Network Address translation
+
+5)Route Table -main,public and private
+
+6)SG - Security Groups and NACL -Network Access COntrole List
+
+7)Keypairs
+
+8)AMI -- Amazon Machine Image
+
+9)EC2
+
+----------------------------------------------------------
+
+
+1)IP Address :
+
+ -- It is an identity of a resource 
+
+ -- two types of IP Address are available
+
+ --IPv4 :
+	
+	-32 bit range
+	-x.x.x.x (0.0.0.0 -- 255.255.255.255)
+
+Google  IPv4: 8.8.8.8 and/or 8.8.4.4
+
+ --IPv6 :
+
+	-128 bit range
+	-x:x:x::x
+
+Google IPv6: 2001:4860:4860::8888 and/or 2001:4860:4860::8844
+
+A Resource can have min 1 public-ip and 1+ private-ips
+
+		 Parity bit
+
+CLASS A :N.H.H.H -- 0 --- 0.0.0.0 -127.255.255.255 : 16777214 ips
+
+00000000.00000000.00000000.00000000 --- 01111111.11111111.11111111.11111111
+
+
+CLASS B :N.N.H.H -- 10 -- 128.0.0.0 -191.255.255.255 : 65534 ips
+
+10000000.00000000.00000000.00000000 --- 10111111.11111111.11111111.11111111
+
+
+CLASS C :N.N.N.H -- 110 -- 192.0.0.0 - 223.255.255.255 : 254 ips
+
+11000000.00000000.00000000.00000000 --- 110111111.11111111.11111111.11111111
+
+
+what is the primary ip of a resource ?
+
+Always private ip is primary ip.
+
+If you stop/restart resource , then public ip is changed,private ip remains same.
+
+How do i get constant public ip ?
+
+Elastic IP : for constant public ip.
+
+on Elastic IP
+1)Allocate Elastic IP to your region/account
+2)Associate ElasticIP to Resource (as public ip)
+3)DeAssociate ElasticIP
+4)Release Elastic Ip
+
+Note : Idle Elastic IP is Chargable
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

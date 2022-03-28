@@ -1,0 +1,128 @@
+AWS  -----------------CLOUD ENVIRONMENT
+
+SEVER  ------  DATA CENTER   -----Avalabulity zone
+
+[Physical sever are runniing
+
+Sever and office]
+
+Onprimiss  third part  ------cloud maintan
+
+IASS
+
+PASS
+
+SASS
+
+CLOUD VENDORDRS
+
+AWS
+
+AZURE
+
+GCP
+
+IBM
+
+ORACLE
+
+WHY AWS   ?
+
+Hage market  shere  ----------38 %
+
+Hage infrastature  -----------26 regions  ----------84 avalabulity zones
+
+Bulling statage   --------------------      pay as you go modal 
+
+Data security      
+ 
+Service  level agriment   SLA   ------98%
+
+AWS FREE TIER     -12M------750Hrs
+
+------------------------------------------------------
+
+VPC-Setup----(vertual private cloud)
+
+ip address----(public ip,(prevate ip is know as primary ip )
+
+virtualization-instanse sizes or instance familys--(genral process,comput optimization,memory optimized,accelerated computing,storage optimized)
+
+subnet,route table,internet gate way,scuritey groups,key pairs,
+
+ec2 lanch windows,linux,
+
+custom ami-------(same servers backup conditions to create the custem ami & snapshot created it is chargeble)
+
+nat gate way-------np-----( private server are connection it is chargeble per hour 5 Rupees)
+
+peering-------(Two vpcs interconnection b/w the same region(intra)or onther region is interconnection) 
+
+3tier arch --------np----------(example of ecom website,order,payments,deliveries)
+
+Basic networking------- completed
+
+-------------------------------------------------------------------------------------------
+
+EBS-Elastic block storage--------(server level storage add volume your vish save the in this volume)
+
+EFS -(NFS Port number 2049)--- elastic file system---------np (save the files one server to shere the onther server)
+
+ELB - elestic load balancer------case1 is classic ------ok
+
+classic elb + app----elb---(continus respance one by one------- it is no chargeble conditions)
+
+net work LB-------NP ---( two server created attach LB-But server is respance only one server-----it is chargeble conditions)
+
+Auto scaling  +  ELB --------------(load incresess automalically server will be lanuched & load is decresess server will be terminated automaticlly)
+
+IAAS completed
+
+-------------------------------------------------------------------PAAS---------
+IAM------ Identitey acesss mangement--------------------ok
+
+user creation-- user groups----- allow permistions------ ok
+
+user-custom polices creations------json files ----------ok
+
+AWS CLI---------(command line interfacce)---(lanuch of ec2 instance run,stop,terminated)----ok
+
+s3---services-----s3 class------s3 bucket praperties----- ok    [static website hosting, incline policy ]
+
+logs--s3 life cycle mangement-----ok-----(S3 class: file storage standed(30),standered IA (60) Glacier (90),Deep Glac
+ier (180)------crated--- the file will be deleted auto maticliy)
+
+cross region replication (CRR) ----------- (uploading the files one region to same files to copy the onther region)--ok
+
+How to acess to ec2 instance in s3 bucket ------- ok
+
+VPC--End point----(Two server connection to prevate ip it is no chargeble)--ok
+
+Encrytion (KMS) ------ amazon key mangemet service ( store the files directly in amazon data center it is cost effortive services per hour)----NP
+
+multipart approch -------( large data to the cut peices ,example400gb storage devided to the 5 equal parts)---ok
+
+PAAS Completed
+--------------------------------------------------
+SAAS
+
+1.HOW to lanuch data base ( through the connecting ec2 instances in mysql server----- it is cost effortive in month bases)
+
+------open RDS SERVICE--- Click data base---- create the data base ---ok
+
+
+2.DMS (Data migration services) --local data base to cloud data base to move the servers backup conditions --NP
+
+3.cloud watch------dashboard prepare----alarms------ logs----------billing alarms(only for the N.V region)[pending;stress applied command]--np
+
+4.vpcfllow logs------ log groups----events-----cloud tril---np
+
+5.eleastic bean stock----- all defaclt configaration will be considable--- with the 10 application deployment process----chargeble---ok
+
+6. cloud front------- to store the data to allow the all region or see the data your slecting region to consider to the intractions allow the admin -----chargleble---ok
+
+
+
+
+
+

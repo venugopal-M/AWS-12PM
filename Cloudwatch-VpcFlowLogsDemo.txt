@@ -1,0 +1,54 @@
+Setup VPC Flow Logs to CloudWatch Logs
+(https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs-cwl.html#flow-logs-iam)
+
+1)select VPC DashBoard
+2)Create log group if you don't have (vpcflowLogs)
+3)Create IAM Role 
+  Name : vpcflowLogs-Role-1
+  policy:vpcflowLogs-Pol-1
+-----------------------------
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogGroups",
+        "logs:DescribeLogStreams"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}   
+-----------------------------
+3)Edit Trust Relationship
+--------------------------------
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+} 
+---------------------------------
+In VPC Dashboard
+Select your Vpc
+3)select Flow Logs tab > Create Flow Logs
+Name:demovpc-flowlog-1
+Filter:All
+Maximum aggregation interval:10
+Destination : Send to CloudWatch Logs
+Destination log group:vpcflowLogs
+IAM role: vpcflowLogs-Role-1
+Log record format:AWS default format
+
+CreateFlowLog

@@ -1,0 +1,171 @@
+13-01-2022
+
+1)SG and NACL
+
+2)NAT Gateway Demo
+
+
+SG :Security Group
+In general we have to specify inbound and outbound rules for security group.
+1.it works at "instance level"
+2.Security Groups are "statefull" in Nature.
+3.we have to specify inbound rules.
+4.No need to specify outbound rule.
+ because by default all traffic allowed at outbound
+
+
+case 1 :
+1) VPC1-SG :
+
+  InboundRules :
+  1)ssh
+  outboundRules:
+  1)All Traffic
+
+Login : Success
+
+Ping: Success
+
+
+case 2:
+1) VPC1-SG :
+
+  InboundRules :
+  1)ssh
+  outboundRules:
+  1)None
+
+Login : Success
+
+Ping:  Failed
+
+
+case 3:
+1) VPC1-SG :
+
+  InboundRules :
+  1)None
+  outboundRules:
+  1)All Traffic
+
+Login : Failed
+
+Ping:  NA
+
+
+case 4:
+1) VPC1-SG :
+
+  InboundRules :
+  1)SSH
+  outboundRules:
+  1)SSH
+
+Login : Success
+
+Ping:  Failed
+
+
+Note : Reset to case 1.
+
+NACL :Network Access Controle List
+-----------------------------------------
+In general we have to specify inbound and outbound rules for NACL.
+
+1)it works at subnet level.
+2)it is stateless in Nature.
+3)It contains Allowed Rules and Deny Rules along with rule Number.
+
+
+case 1 :
+1) VPC1-NACL-1 :
+
+  InboundRules :
+  1)ssh
+  outboundRules:
+  1)All Traffic
+
+Login : Success
+
+Ping: Faild
+
+case 2 :
+1) VPC1-NACL-1 :
+
+  InboundRules :
+  1)ssh
+  outboundRules:
+  1)None
+
+Login : Failed
+
+Ping:  NA
+
+
+case 3 :
+1) VPC1-NACL-1 :
+
+  InboundRules :
+  1)None
+  outboundRules:
+  1)All Traffic
+
+Login : Failed
+
+Ping:  NA
+
+
+
+case 4 :
+1) VPC1-NACL-1 :
+
+  InboundRules :
+  1)SSH
+  outboundRules:
+  1)SSH
+
+Login : Failed
+
+Ping:  Failed
+
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-network-acls.html#nacl-ephemeral-ports
+
+1) VPC1-NACL-1 :
+
+  InboundRules :
+  1)SSH
+  outboundRules:
+  1)custom TCP ------	1024-65535
+
+
+Reset or Delete NACL
+
+
+=================================================================================
+
+NAT - IGW :
+----------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
