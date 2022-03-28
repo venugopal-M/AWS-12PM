@@ -1,0 +1,26 @@
+
+Lambda Demo : Upload Objects into S3 ,trigger lambda function 
+
+1)Open Lambda and S3 Service
+
+2)create mainlambdabucket ,lambdabucketimage,lambdabucketpdf,lambdabuckettxt
+
+3)Create Lambda Function
+  
+ Name:mainlambdabucket
+ Runtime: Python 3.8
+ Permission : LambdaAdminRole (S3 and Cloudwatch Full Access)
+ Create Function
+
+4)Add Trigger 
+  Trigger configuration : S3
+  Event Type : All Object Events
+  Enable Trigger
+  
+  Add  Destination:
+  	Asynchronous invocation
+	On failure
+ 	Destination Type:
+	SNS topic
+	Destination : demosns
+ 
